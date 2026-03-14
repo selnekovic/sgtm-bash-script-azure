@@ -4,7 +4,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2026 Julius Selnekovic
+# Copyright (c) 2025 Julius Selnekovic
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 DOCKER_IMAGE_URL="gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable"
-WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps. Running ..."""
+WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps."""
 
 LOCATIONS=(
   "westeurope"
@@ -182,12 +182,18 @@ create_environment() {
 deploy_preview_app() {
   echo ""
   echo "Deploying preview (debug) Container App..."
+  if ! az containerapp env show --name "${environment_name}" --resource-group "${resource_group}" &>/dev/null; then
+    echo "ERROR: Container Apps environment '${environment_name}' not found in resource group '${resource_group}'."
+    echo "Ensure the environment was created (check for errors above) and that you are in the correct subscription."
+    exit 1
+  fi
   preview_app_name="${service_name}-view"
 
   debug_service_url=$(az containerapp create \
     --name "${preview_app_name}" \
     --resource-group "${resource_group}" \
     --environment "${environment_name}" \
+    --location "${location}" \
     --image "${DOCKER_IMAGE_URL}" \
     --target-port 8080 \
     --ingress external \
@@ -210,6 +216,7 @@ deploy_production_app() {
     --name "${production_app_name}" \
     --resource-group "${resource_group}" \
     --environment "${environment_name}" \
+    --location "${location}" \
     --image "${DOCKER_IMAGE_URL}" \
     --target-port 8080 \
     --ingress external \
