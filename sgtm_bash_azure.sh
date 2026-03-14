@@ -4,7 +4,7 @@
 #
 # MIT License
 #
-# Copyright (c) 2025 Julius Selnekovic
+# Copyright (c) 2026 Julius Selnekovic
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 DOCKER_IMAGE_URL="gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable"
-WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps."""
+WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps. Running ..."""
 
 LOCATIONS=(
   "westeurope"
