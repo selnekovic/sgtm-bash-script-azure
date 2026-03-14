@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 DOCKER_IMAGE_URL="gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable"
-WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps. Running ..."""
+WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps. Running..."""
 
 LOCATIONS=(
   "westeurope"
@@ -193,7 +193,6 @@ deploy_preview_app() {
     --name "${preview_app_name}" \
     --resource-group "${resource_group}" \
     --environment "${environment_name}" \
-    --location "${location}" \
     --image "${DOCKER_IMAGE_URL}" \
     --target-port 8080 \
     --ingress external \
@@ -216,7 +215,6 @@ deploy_production_app() {
     --name "${production_app_name}" \
     --resource-group "${resource_group}" \
     --environment "${environment_name}" \
-    --location "${location}" \
     --image "${DOCKER_IMAGE_URL}" \
     --target-port 8080 \
     --ingress external \
