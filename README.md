@@ -14,7 +14,6 @@ Deploy [server-side Google Tag Manager](https://developers.google.com/tag-platfo
 
 - **Azure subscription**
 - **Container config string** from your server-side GTM container (GTM → Container → copy config)
-- Run in **Azure Cloud Shell** with **Bash**: [shell.azure.com](https://shell.azure.com)
 
 ## How to run
 
@@ -27,6 +26,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/selnekovic/sgtm-bash-scr
 
 3. Choose **location** (number or name) and enter your **container config string** when prompted.
 4. Confirm to create resources and deploy. When finished, the script prints the production URL and health-check URL.
+
+## More control (step-by-step)
+
+If you prefer to run each command yourself (e.g. to tweak settings or inspect resources between steps), use the **step-by-step manual**: [sgtm_bash_azure_steps.sh](https://github.com/selnekovic/sgtm-bash-script-azure/blob/main/sgtm_bash_azure_steps.sh). It contains the same deployment as comments and copy-paste commands you can run one section at a time in Azure Cloud Shell.
 
 ## License and credits
 
