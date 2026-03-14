@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 DOCKER_IMAGE_URL="gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable"
-WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps. Running..."""
+WELCOME_MESSAGE="""Set up your tagging server on Azure Container Apps. Running the script ..."""
 
 LOCATIONS=(
   "westeurope"
@@ -182,11 +182,6 @@ create_environment() {
 deploy_preview_app() {
   echo ""
   echo "Deploying preview (debug) Container App..."
-  if ! az containerapp env show --name "${environment_name}" --resource-group "${resource_group}" &>/dev/null; then
-    echo "ERROR: Container Apps environment '${environment_name}' not found in resource group '${resource_group}'."
-    echo "Ensure the environment was created (check for errors above) and that you are in the correct subscription."
-    exit 1
-  fi
   preview_app_name="${service_name}-view"
 
   debug_service_url=$(az containerapp create \
